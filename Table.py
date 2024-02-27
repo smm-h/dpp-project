@@ -19,7 +19,9 @@ class Table:
     def __str__(self):
         return str(self.df)
 
+    def __repr__(self):
+        return repr(self.df)
+
     def k_anonymize(self, k: int):
+        self.df.sort_values(self.dm.sort_order)
         return self.df.groupby(self.dm.q)
-
-

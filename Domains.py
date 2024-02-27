@@ -15,6 +15,8 @@ class Domains:
         self.q: List[str] = [d.name for d in domains if not d.sensitive]
         self.s: List[str] = [d.name for d in domains if d.sensitive]
 
+        self.sort_order: List[str] = [d.name for d in sorted(domains, key=lambda d: d.sort_rank)]
+
     # generate a fake Table
     def generate(self, n: int):
         df = DataFrame(

@@ -14,7 +14,5 @@ if __name__ == '__main__':
     # print(t1.get_k())
     # print(t2.get_k())
 
-    from patients import patients
-
     t = Table(patients, read_csv('data/generated/1000.csv'))
-    print(t.k_anonymize(2))
+    print(t.get_k())

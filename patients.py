@@ -7,25 +7,25 @@ from Domains import Domains
 from generalizers import *
 
 dm_zip_code = Domain(
-    'Zip Code', False,
+    'Zip Code', False, 3,
     lambda: str(int(normal(randint(12, 80) * 1000, 200))),
     asterisks_right_to_left
 )
 
 dm_age = Domain(
-    'Age', False,
+    'Age', False, 4,
     lambda: str(int(normal(45, 12))),
     age_generalizer
 )
 
 dm_sex = Domain.make_from_df(
-    'Sex', False,
+    'Sex', False, 2,
     read_csv('data/columns/Sex.csv'))
 dm_nationality = Domain.make_from_df(
-    'Nationality', False,
+    'Nationality', False, 1,
     read_csv('data/columns/Nationality.csv'))
 dm_condition = Domain.make_from_df(
-    'Condition', True,
+    'Condition', True, 0,
     read_csv('data/columns/Condition.csv'))
 
 patients = Domains([
