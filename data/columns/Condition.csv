@@ -1,0 +1,24 @@
+Value,Taxonomy
+Influenza,Respiratory/Viral;Viral;Disease
+Hypertension,Blood pressure;Disease
+Hypotension,Blood pressure;Disease
+Blood Cancer,Cancer;Disease
+Bone Cancer,Cancer;Disease
+Breast Cancer,Cancer;Disease
+Syphilis,Infectious;Disease
+Asthma,Respiratory;Disease
+Common cold,Respiratory/Viral;Viral;Disease
+Covid-19,Respiratory/Viral;Viral;Disease
+HPV,Viral;Disease
+HIV,Viral;Disease
+Insomnia,Sleep Disorder;Disorder
+Narcolepsy,Sleep Disorder;Disorder
+Broken Arm,Broken Limb;Injury;Disease
+Broken Leg,Broken Limb;Injury;Disease
+Sprained Ankle,Sprain;Injury;Disease
+Sprained Wrist,Sprain;Injury;Disease
+Hepatitis,Viral;Disease
+Bronchitis,Respiratory;Disease
+Hangnail,Injury
+Blood in urine,Injury
+Nosebleed,Injury

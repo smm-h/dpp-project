@@ -1,0 +1,9 @@
+Attribute,Domain size,Generalizations type,Ht.
+Zipcode,31953,Round each digit,5
+Order date,320,Taxonomy tree,3
+Gender,2,Suppression,1
+Style,1509,Suppression,1
+Price,346,Round each digit,4
+Quantity,1,Suppression,1
+Shipment,2,Suppression,1
+Cost,147,Sensitive att.,

@@ -1,0 +1,10 @@
+Attribute,Domain size,Generalizations type,Ht.
+Age,74,"ranges-5,10,20",4
+Gender,2,Suppression,1
+Race,5,Suppression,1
+Marital Status,7,Taxonomy tree,2
+Education,16,Taxonomy tree,3
+Native Country,41,Taxonomy tree,2
+Work Class,7,Taxonomy tree,2
+Salary class,2,Sensitive att.,
+Occupation,41,Sensitive att.,
