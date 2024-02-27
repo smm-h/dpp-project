@@ -23,8 +23,3 @@ class Table:
         return self.df.groupby(self.dm.q)
 
 
-if __name__ == '__main__':
-    from patients import patients
-
-    t = Table(patients, read_csv('data/generated/1000.csv'))
-    print(t.k_anonymize(2))

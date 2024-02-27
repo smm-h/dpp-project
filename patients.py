@@ -11,10 +11,11 @@ dm_zip_code = Domain(
     lambda: str(int(normal(randint(12, 80) * 1000, 200))),
     asterisks_right_to_left
 )
+
 dm_age = Domain(
     'Age', False,
-    lambda: int(normal(45, 12)),
-    None
+    lambda: str(int(normal(45, 12))),
+    age_generalizer
 )
 
 dm_sex = Domain.make_from_df(
