@@ -16,5 +16,6 @@ class Domain:
     def make_from_df(name: str, sensitive: bool, sort_rank: int, df: DataFrame):
         v = list(df['Value'])
         w = list(df['Weight']) if 'Weight' in df else None  # nullable
-        g = list(df['Generalization']) if 'Generalization' in df else []
-        return Domain(name, sensitive, sort_rank, lambda: choices(v, w)[0], make_list_generalizer(g))
+        t = list(df['Taxonomy'])
+        g = {v[i]: t[i].split(';') for i in range(len(t))}
+        return Domain(name, sensitive, sort_rank, lambda: choices(v, w)[0], g)

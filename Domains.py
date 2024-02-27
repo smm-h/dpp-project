@@ -1,4 +1,4 @@
-from pandas import DataFrame
+from pandas import DataFrame, Series
 from typing import List
 
 from Domain import Domain
@@ -32,3 +32,17 @@ class Domains:
 
     def __str__(self):
         return f'Domains:{self.names}'
+
+    def anonymize(self, rows: List[Series]):
+        domains = sorted(self.domains, key=lambda domain: domain.sort_rank)
+        i = 0
+        while i < len(domains):
+            d = domains[i]
+            g = d.generalizer
+            v = [row[d.name] for row in rows]
+            while len(set(v)) > 1:
+                print(v)
+                v = [g(x) for x in v]
+            i += 1
+
+        return rows

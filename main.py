@@ -16,3 +16,6 @@ if __name__ == '__main__':
 
     t = Table(patients, read_csv('data/generated/1000.csv'))
     print(t.get_k())
+    a = t.k_anonymize(2)
+    print(a)
+    print(a.get_k())
