@@ -23,11 +23,13 @@ class Table:
         return repr(self.df)
 
     def k_anonymize(self, k: int):
-        sort_order = self.dm.sort_order
+        sort_order = [d.name for d in self.dm.sort_order]
         rows = [row for _, row in self.df.sort_values(sort_order).iterrows()]
-        chunks = [self.dm.anonymize(rows[i:i + k]) for i in range(0, len(self.df), k)]
+        chunks = [rows[i:i + k] for i in range(0, len(self.df), k)]
+        anonymized_chunks = [self.dm.anonymize(chunk) for chunk in chunks]
         anonymized_rows = []
-        for c in chunks:
-            for i in c:
-                anonymized_rows.append(i)
+        for chunk in anonymized_chunks:
+            for row in chunk:
+                anonymized_rows.append(row)
+        # print(anonymized_rows, sep='\n')
         return Table(self.dm, DataFrame(anonymized_rows, columns=self.df.columns))

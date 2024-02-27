@@ -1,7 +1,7 @@
 from pandas import DataFrame
 from random import choices
 
-from generalizers import make_list_generalizer
+from generalizers import make_taxonomy_generalizer
 
 
 class Domain:
@@ -17,5 +17,12 @@ class Domain:
         v = list(df['Value'])
         w = list(df['Weight']) if 'Weight' in df else None  # nullable
         t = list(df['Taxonomy'])
-        g = {v[i]: t[i].split(';') for i in range(len(t))}
+        taxonomy = dict()
+        for i in range(len(v)):
+            b = t[i].split(';')
+            taxonomy[v[i]] = b[0]
+            for j in range(len(b) - 1):
+                taxonomy[b[j]] = b[j + 1]
+            taxonomy[b[-1]] = '*'
+        g = make_taxonomy_generalizer(taxonomy)
         return Domain(name, sensitive, sort_rank, lambda: choices(v, w)[0], g)

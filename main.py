@@ -14,8 +14,14 @@ if __name__ == '__main__':
     # print(t1.get_k())
     # print(t2.get_k())
 
-    t = Table(patients, read_csv('data/generated/1000.csv'))
+    fn = 'data/generated/1000'
+    k = 4
+    t = Table(patients, read_csv(fn + '.csv'))
     print(t.get_k())
-    a = t.k_anonymize(2)
+    a = t.k_anonymize(k)
     print(a)
     print(a.get_k())
+    s = a.to_csv(",")
+
+    with open(fn + f'_{k}.csv', 'w') as f:
+        f.write(s)

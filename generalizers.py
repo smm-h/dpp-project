@@ -1,7 +1,8 @@
-from typing import List
+from typing import List, Dict
 
 
 def asterisks_right_to_left(x: str) -> str:
+    x = str(x)
     i = len(x) - x.count('*') - 1
     if i <= 0:
         return '*'
@@ -12,6 +13,7 @@ def asterisks_right_to_left(x: str) -> str:
 
 
 def age_generalizer(x: str) -> str:
+    x = str(x)
     if '-' not in x:
         k = 5
     else:
@@ -24,18 +26,13 @@ def age_generalizer(x: str) -> str:
     return f'{a}-{a + k}'
 
 
-def make_list_generalizer(g: List[str]):
-    # for faster inclusion checks
-    s = set(g)
+def make_taxonomy_generalizer(t: Dict[str, str]):
 
     def generalizer(x: str) -> str:
-        if x in s:
-            i = g.index(x)
-            if i + 1 == len(g):
-                return '*'
-            else:
-                return g[i + 1]
+        x = str(x)
+        if x in t:
+            return t[x]
         else:
-            return g[0]
+            return '*'
 
     return generalizer
