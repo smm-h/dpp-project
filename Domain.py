@@ -1,6 +1,8 @@
 from pandas import DataFrame
 from random import choices
 
+from generalizers import get_list_generalizer
+
 
 class Domain:
     def __init__(self, name: str, sensitive: bool, generator, generalizer):
@@ -11,9 +13,7 @@ class Domain:
 
     @staticmethod
     def make_from_df(name: str, sensitive: bool, df: DataFrame):
-        v = list(df['Value'])  # non-nullable
-        w = list(df.get('Weight'))
-        g = list(df.get('Generalization'))
-        return Domain(name, sensitive,
-                      lambda: choices(v, w)[0],
-                      lambda x: g[0] if x not in g else g[1 + g.index(x)])
+        v = list(df['Value'])
+        w = list(df['Weight']) if 'Weight' in df else None  # nullable
+        g = list(df['Generalization']) if 'Generalization' in df else []
+        return Domain(name, sensitive, lambda: choices(v, w)[0], get_list_generalizer(g))

@@ -36,9 +36,9 @@ patients = Domains([
 ])
 
 if __name__ == '__main__':
-    n = 10
+    n = 1000
     d = patients.generate(n)
     s = d.to_csv()
-    print(s)
-    # with open(f'data/generated/{n}.csv', 'w') as f:
-    #     f.write(s)
+    # print(s)
+    with open(f'data/generated/{n}.csv', 'w') as f:
+        f.write(s)

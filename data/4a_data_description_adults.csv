@@ -1,5 +1,5 @@
 Attribute,Domain size,Generalizations type,Ht.
-Age,74,"ranges-5,10,20",4
+Age,74,'ranges-5,10,20',4
 Gender,2,Suppression,1
 Race,5,Suppression,1
 Marital Status,7,Taxonomy tree,2
