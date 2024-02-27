@@ -10,10 +10,10 @@ class Domain:
         self.generalizer = generalizer
 
     @staticmethod
-    def make_from_df(name: str, df: DataFrame):
+    def make_from_df(name: str, sensitive: bool, df: DataFrame):
         v = list(df['Value'])  # non-nullable
         w = list(df.get('Weight'))
         g = list(df.get('Generalization'))
-        return Domain(name, False,
+        return Domain(name, sensitive,
                       lambda: choices(v, w)[0],
                       lambda x: g[0] if x not in g else g[1 + g.index(x)])

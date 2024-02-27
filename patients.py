@@ -1,23 +1,39 @@
 from pandas import read_csv
 from numpy.random import normal
-from random import choice, choices
+from random import randint
 
+from Domain import Domain
 from Domains import Domains
+from generalizers import *
 
-patients = (
-    Domains()
-    .add('Zip Code', False,
-         lambda: int(choice([
-             normal(12500, 200),
-             normal(14500, 200),
-             normal(17500, 250),
-         ])))
-    .add('Age', False,
-         lambda: int(normal(45, 12)))
-    .add_from_df(read_csv('data/columns/Nationality.csv'))
-    .add_from_df(read_csv('data/columns/Condition.csv'))
-    .add_from_df(read_csv('data/columns/Sex.csv'))
+dm_zip_code = Domain(
+    'Zip Code', False,
+    lambda: str(int(normal(randint(12, 80) * 1000, 200))),
+    asterisks_right_to_left
 )
+dm_age = Domain(
+    'Age', False,
+    lambda: int(normal(45, 12)),
+    None
+)
+
+dm_sex = Domain.make_from_df(
+    'Sex', False,
+    read_csv('data/columns/Sex.csv'))
+dm_nationality = Domain.make_from_df(
+    'Nationality', False,
+    read_csv('data/columns/Nationality.csv'))
+dm_condition = Domain.make_from_df(
+    'Condition', True,
+    read_csv('data/columns/Condition.csv'))
+
+patients = Domains([
+    dm_zip_code,
+    dm_age,
+    dm_sex,
+    dm_nationality,
+    dm_condition,
+])
 
 if __name__ == '__main__':
     n = 10

@@ -1,5 +1,4 @@
-from pandas import DataFrame
-from typing import List
+from pandas import read_csv, DataFrame
 
 from Domains import Domains
 
@@ -20,4 +19,12 @@ class Table:
     def __str__(self):
         return str(self.df)
 
-    def k_anonymize(self, k: int) -> None:
+    def k_anonymize(self, k: int):
+        return self.df.groupby(self.dm.q)
+
+
+if __name__ == '__main__':
+    from patients import patients
+
+    t = Table(patients, read_csv("data/generated/1000.csv"))
+    print(t.k_anonymize(2))
